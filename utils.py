@@ -8,6 +8,7 @@ def convert_to_datetime(timestamp: float) -> str:
 
 
 def remove_empty_directories(root_dir: str) -> None:
+    """ Generate list of all directory and subdirectory, and remove the empty ones"""
     all_dirs = []
     for (dir_path, dir_names, _) in walk(root_dir):
         for dirname in dir_names:
@@ -20,6 +21,10 @@ def remove_empty_directories(root_dir: str) -> None:
 
 
 def extract_files(root_dir: str) -> list[(str, str, str)]:
+    """
+    Go through every directory and subdirectory and return list of tuples
+    tuple contains filename, file's parent directory, file's absolute path
+    """
     list_of_files = []
     for (dir_path, _, file_names) in walk(root_dir):
         list_of_files.extend(
