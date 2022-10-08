@@ -4,8 +4,8 @@ from os.path import getsize, getmtime
 from model import File
 from utils import extract_files, remove_empty_directories
 
-base_dir = '/Users/sahil/Code/Webstorm/gratitude.sahilfruitwala.com'
-backup_dir = '/Users/sahil/Code/Pycharm/gratitude.sahilfruitwala.com'
+base_dir = ''  # absolute path of main directory
+backup_dir = ''  # absolute path of backup directory
 
 all_base_files = []
 for file in extract_files(base_dir):
