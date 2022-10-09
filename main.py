@@ -1,17 +1,24 @@
 from os import remove
 from os.path import getsize, getmtime
 
+from config import BASE_DIR, BACKUP_DIR
 from model import File
 from utils import extract_files, measure_run_time, remove_empty_directories
-
-BASE_DIR = '/Users/sahil/Code/Webstorm/gratitude.sahilfruitwala.com'  # absolute path of main directory
-BACKUP_DIR = '/Users/sahil/Code/Pycharm/gratitude.sahilfruitwala.com'  # absolute path of backup directory
 
 
 def generate_file_objects(dir_path: str):
     all_files = []
     for file in extract_files(dir_path):
-        all_files.append(File(file[0], file[1], dir_path, file[2], getsize(file[2]), getmtime(file[2])))
+        all_files.append(
+            File(
+                name=file[0],
+                extension=file[1],
+                parent_directory=file[2],
+                root_directory=dir_path,
+                full_path=file[3],
+                size=getsize(file[3]),
+                updated_at=getmtime(file[3]))
+        )
     return all_files
 
 
