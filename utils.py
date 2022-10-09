@@ -25,6 +25,7 @@ def write_list_to_file(file_list: list):
     with open(f'{today} - Deletion Error.txt', 'w', encoding="UTF-8") as file:
         for filename in file_list:
             file.write(f"{filename}\n")
+    print(f'Added list of files failed to delete are saved in "{today} - Deletion Error.txt"')
 
 
 def remove_empty_directories(root_dir: str) -> None:
