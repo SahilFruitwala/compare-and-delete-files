@@ -2,7 +2,7 @@ from os import remove
 from os.path import getsize, getmtime
 
 from model import File
-from utils import extract_files, remove_empty_directories
+from utils import extract_files, measure_run_time, remove_empty_directories
 
 BASE_DIR = '/Users/sahil/Code/Webstorm/gratitude.sahilfruitwala.com'  # absolute path of main directory
 BACKUP_DIR = '/Users/sahil/Code/Pycharm/gratitude.sahilfruitwala.com'  # absolute path of backup directory
@@ -24,14 +24,11 @@ def remove_similar_files(base_dir: str, backup_dir: str):
             remove(f2.full_path)
 
 
-import time
-
-start_time = time.time()
-
-remove_similar_files(BASE_DIR, BACKUP_DIR)
-remove_empty_directories(BACKUP_DIR)
-
-end_time = time.time()
-print("--- %s seconds ---" % (end_time - start_time))
+@measure_run_time
+def main():
+    remove_similar_files(BASE_DIR, BACKUP_DIR)
+    remove_empty_directories(BACKUP_DIR)
 
 
+if __name__ == "__main__":
+    main()
