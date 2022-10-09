@@ -62,6 +62,7 @@ def extract_files(root_dir: str) -> list[(str, str, str)]:
         list_of_files.extend(
             (
                 filename,
+                path.splitext(filename)[1][1:],
                 dir_path.split('/')[-1],
                 path.join(dir_path, filename)
             ) for filename in file_names

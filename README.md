@@ -13,7 +13,7 @@ After removing the files it will remove empty directories as well.
 ## How to Test
 1. Copy and paste one directory with many files and folders
 2. Edit one or two files from the new pasted(second) directory
-3. Assign absolute path to `base_dir` and `backup_dir` variables.
+3. Create `config.py` file and assign absolute path to `BASE_DIR` and `BACKUP_DIR` variables.
 4. Run code.
 5. If you don't see any error, verify only updated files are there or not.
 6. If you see an error or code did not work, [contact me](https://twitter.com/Sahil_Fruitwala).
