@@ -16,8 +16,14 @@ def remove_empty_directories(root_dir: str) -> None:
     for i in range(len(all_dirs) - 1, -1, -1):
         temp_path = path.join(all_dirs[i], '.DS_Store')
         if path.exists(temp_path):
-            remove(temp_path)
-        rmdir(all_dirs[i])
+            try:
+                remove(temp_path)
+            except:
+                print(temp_path)
+        try:
+            rmdir(all_dirs[i])
+        except:
+            print(all_dirs[i])
 
 
 def extract_files(root_dir: str) -> list[(str, str, str)]:
