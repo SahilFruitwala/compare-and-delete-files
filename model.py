@@ -1,4 +1,3 @@
-import datetime
 from dataclasses import dataclass, field
 
 
@@ -11,6 +10,3 @@ class File:
     full_path: str = field(compare=False)
     size: float
     updated_at: float
-
-
-

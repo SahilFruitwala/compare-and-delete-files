@@ -17,7 +17,8 @@ def generate_file_objects(dir_path: str):
                 root_directory=dir_path,
                 full_path=file[3],
                 size=getsize(file[3]),
-                updated_at=getmtime(file[3]))
+                updated_at=getmtime(file[3]),
+            ),
         )
     return all_files
 

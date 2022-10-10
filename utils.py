@@ -4,12 +4,13 @@ from time import time, ctime
 
 
 def convert_to_datetime(timestamp: float) -> str:
-    """ take timestamp as float and returns full date and time """
+    """take timestamp as float and returns full date and time"""
     return ctime(timestamp)
 
 
 def measure_run_time(func):
-    """ decorate to time given function """
+    """decorate to time given function"""
+
     def timeit_wrapper(*args, **kwargs):
         start_time = time()
         func(*args, **kwargs)
@@ -20,16 +21,18 @@ def measure_run_time(func):
 
 
 def write_list_to_file(file_list: list):
-    """ write filename from list of filenames """
-    today = datetime.today().strftime('%Y-%m-%d')
-    with open(f'{today} - Deletion Error.txt', 'w', encoding="UTF-8") as file:
+    """write filename from list of filenames"""
+    today = datetime.today().strftime("%Y-%m-%d")
+    with open(f"{today} - Deletion Error.txt", "w", encoding="UTF-8") as file:
         for filename in file_list:
             file.write(f"{filename}\n")
-    print(f'Added list of files failed to delete are saved in "{today} - Deletion Error.txt"')
+    print(
+        f'Added list of files failed to delete are saved in "{today} - Deletion Error.txt"'
+    )
 
 
 def remove_empty_directories(root_dir: str) -> None:
-    """ Generate list of all directory and subdirectory, and remove the empty ones"""
+    """Generate list of all directory and subdirectory, and remove the empty ones"""
     all_dirs = []
     for (dir_path, dir_names, _) in walk(root_dir):
         for dirname in dir_names:
@@ -37,7 +40,7 @@ def remove_empty_directories(root_dir: str) -> None:
 
     error_file_list = []
     for i in range(len(all_dirs) - 1, -1, -1):
-        temp_path = path.join(all_dirs[i], '.DS_Store')
+        temp_path = path.join(all_dirs[i], ".DS_Store")
         if path.exists(temp_path):
             try:
                 remove(temp_path)
@@ -63,9 +66,10 @@ def extract_files(root_dir: str) -> list[(str, str, str)]:
             (
                 filename,
                 path.splitext(filename)[1][1:],
-                dir_path.split('/')[-1],
-                path.join(dir_path, filename)
-            ) for filename in file_names
+                dir_path.split("/")[-1],
+                path.join(dir_path, filename),
+            )
+            for filename in file_names
         )
 
     return list_of_files
